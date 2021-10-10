@@ -23,6 +23,42 @@ This repo will hold the starter codes for the lab assignemnts. You will build so
     * `roslaunch turtlebot3_gazebo turtlebot3_empty_world.launch `
 
 7. You should a Gazebo screen with TurtleBot 3 loaded: 
-![TurtleBot 3](images/gazebo_empty.png)
+![TurtleBot 3 Gazebo](images/gazebo_empty.png)
  
 8. If you see this section, the TurtleBot 3 simulation is successfully installed. If you don’t get to this point, check previous steps carefully and make sure you didn’t miss any commands. 
+
+## Lab 2 Setup
+In this lab assignment, you will simulate a Gazebo environment with a TurtleBot and a Apriltag marker. Apriltags are visual fiducial markers that can be used for pose estimation, localization etc. These markers can be detected and their poses are estimated accuratly with an RGB camera. To run the starter code for the the lab 2, we will install the apritag software and its ROS wrapper:
+
+* To install Apriltags, go to your terminal and simply run this command `sudo apt install ros-noetic-apriltag-ros`
+
+Now, follow the steps below to install this repo.
+* `cd ~/catkin_ws/src`
+* `git clone https://github.com/tkelestemur/turtlebot3_mr.git`
+* `cd ~/catkin_ws`
+* `catkin build`
+* `source catkin_ws/devel/setup.bash`
+
+To start the Gazebo with the TurtleBot and simulated Apriltag, run the following launch file:
+* `roslaunch turtlebot3_mr turtlebot3_lab2.launch`
+
+This launch file will create the Gazebo environment and publish the topics. To see the topics published, run `rostopic list` in another terminal. Some of the useful topics are explained below
+
+* `/camera/rgb/image_raw` : RGB image from the TurtleBot camera
+* `/imu` accelerometer and gyroscope data
+* `/joint_states` current joint angles
+* `/scan` 2D lidar data
+* `/tf` transformation for the robot links
+* `/cmd_vel` twist velocity command 
+
+To visuliaze the robot, we can use the RViz program. 
+* `cd ~/catkin_ws/src/turtlebot3_mr`
+* `rosrun rviz rviz -d config/rviz.rviz`
+
+![TurtleBot 3 Gazebo](images/rviz.png)
+
+Finally, we will run the Apriltag detection code for finding the pose of the simulated Apriltag.
+* `roslaunch turtlebot3_mr apriltag_gazebo.launch`
+This will publish the position and orientation of the marker. If you look at the `/tf` topic, you will see the the pose of the marker is constantly published: `rostopic echo /tf`. 
+
+Please take a look at how these launch files are defined to get better understanding of what is going on under the hood. 
