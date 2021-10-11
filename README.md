@@ -10,7 +10,7 @@ This repo will hold the starter codes for the lab assignemnts. You will build so
 
 3. You might get the following error: `no matches found: ros-noetic-rqt*` If you see this error, replace the line `ros-noetic-rqt*` with `ros-noetic-rqt` and run the installation command again. 
 
-4. After you finish this section, the control software for the actual hardware is installed. Now, we will install the simulation. To do so create a ROS workspace as we showed in the class. In case you need a refresher, check out the ROS tutorials: http://wiki.ros.org/catkin/Tutorials/create_a_workspace  
+4. After you finish this section, the control software for the actual hardware is installed. Now, we will install the simulation. To do so create a ROS workspace as we showed in the class. In case you need a refresher, check out the ROS tutorials: http://wiki.ros.org/catkin/Tutorials/create_a_workspace  Note that the ROS tutorials use the `catkin_make` command but this tutorials uses the `catkin build` command for building the ROS workspace. You can use either one of the but I find `catkin` more useful for debugging the workspace. 
 
 5. Follow the steps below to install the TurtleBot 3 simulator 
     * `cd ~/catkin_ws/src` 
@@ -35,6 +35,8 @@ In this lab assignment, you will simulate a Gazebo environment with a TurtleBot 
 Now, follow the steps below to install this repo.
 * `cd ~/catkin_ws/src`
 * `git clone https://github.com/tkelestemur/turtlebot3_mr.git`
+* `cd turltebot3_mr/models`
+* `cp -r Apriltag36_11_00000 ~/.gazebo/models/`
 * `cd ~/catkin_ws`
 * `catkin build`
 * `source catkin_ws/devel/setup.bash`
