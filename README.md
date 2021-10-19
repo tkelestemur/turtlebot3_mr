@@ -35,7 +35,7 @@ In this lab assignment, you will simulate a Gazebo environment with a TurtleBot 
 Now, follow the steps below to install this repo.
 * `cd ~/catkin_ws/src`
 * `git clone https://github.com/tkelestemur/turtlebot3_mr.git`
-* `cd turltebot3_mr/models`
+* `cd turtlebot3_mr/models`
 * `cp -r Apriltag36_11_00000 ~/.gazebo/models/`
 * `cd ~/catkin_ws`
 * `catkin build`
