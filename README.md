@@ -64,3 +64,19 @@ Finally, we will run the Apriltag detection code for finding the pose of the sim
 This will publish the position and orientation of the marker. If you look at the `/tf` topic, you will see the the pose of the marker is constantly published: `rostopic echo /tf`. 
 
 Please take a look at how these launch files are defined to get better understanding of what is going on under the hood. 
+
+## TurtleBot Raspberry Pi Camera Setup
+Please follow the instructions below to get the RPi camera working with ROS:
+
+Install dependicies: 
+* `sudo apt install libraspberrypi-bin libraspberrypi-dev`
+* `sudo apt install ros-noetic-diagnostic-updater`
+* `sudo apt install ros-noetic-camera-info-manager`
+* `sudo apt install ros-noetic-compressed-image-transport`
+
+Install raspi_cam package:
+* `cd catkin_ws/src`
+* `https://github.com/UbiquityRobotics/raspicam_node.git`
+* `cd catkin_ws`
+* `catkin_make`
+* `source devel/setup.bash`
