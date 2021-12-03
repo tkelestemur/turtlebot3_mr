@@ -73,6 +73,9 @@ Install dependicies:
 * `sudo apt install ros-noetic-diagnostic-updater`
 * `sudo apt install ros-noetic-camera-info-manager`
 * `sudo apt install ros-noetic-compressed-image-transport`
+* Add these lines to the `/boot/firmware/config.txt` : `start_x=1`, `gpu_mem=128`
+   * `sudo vim /boot/firmware/config.txt`  
+* Reboot the TurtleBot
 
 Install raspi_cam package:
 * `cd catkin_ws/src`
@@ -80,3 +83,12 @@ Install raspi_cam package:
 * `cd catkin_ws`
 * `catkin_make`
 * `source devel/setup.bash`
+
+Running the camera
+* `roslaunch raspicam_node camerav2_1280x960_10fps.launch enable_raw:=true`
+* `rosrun tf static_transform_publisher 0.03 0 0.1 0 0 0 base_link camera_link 100`
+
+Note that we publish the pose of the camera with respect to the base_link frame of the robot. This will help you to transform AprilTags pose to the base frame of the robot. 
+
+Intrinsic Calibration:
+* To calibrate the intrinsic parameters of the camera, please follow the instructions here: https://github.com/UbiquityRobotics/raspicam_node#calibration
